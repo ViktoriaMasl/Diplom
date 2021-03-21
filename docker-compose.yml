@@ -10,11 +10,11 @@ services:
 
   postgres:
     image: library/postgres:latest
-    container_name: pstg-container
+    container_name: pstg-container1
     ports:
       - '5432:5432'
     volumes:
-      - ./data_postgres:/var/lib/postgresql/data
+      - ./data_postgres1:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=app
       - POSTGRES_USER=app
@@ -22,11 +22,11 @@ services:
 
   mysql:
     image: library/mysql:latest
-    container_name: mysql-container
+    container_name: mysql-container1
     ports:
       - '3306:3306'
     volumes:
-      - ./data_mysql:/var/lib/mysql
+      - ./data_mysql1:/var/lib/mysql
     environment:
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
       - MYSQL_DATABASE=app
