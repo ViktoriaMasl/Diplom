@@ -14,7 +14,7 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - ./data_postgres1:/var/lib/postgresql/data
+      - ./data_postgres:/var/lib/postgresql/data
     environment:
       - POSTGRES_DB=app
       - POSTGRES_USER=app
@@ -22,13 +22,13 @@ services:
 
   mysql:
     image: library/mysql:latest
-    container_name: mysql-container1
+    container_name: mysql-container
     ports:
       - '3306:3306'
     volumes:
       - ./data_mysql1:/var/lib/mysql
     environment:
-      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_ROOT_PASSWORD=admin
       - MYSQL_DATABASE=app
       - MYSQL_USER=app
       - MYSQL_PASSWORD=pass
