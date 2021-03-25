@@ -29,7 +29,7 @@ public class DataHelper {
     }
 
     public static Card getIncorrectMonthCard() {
-        return new Card("4444444444444441", "99", "20", "Ivan Petrov", "123");
+        return new Card("4444444444444441", "0", "20", "Ivan Petrov", "123");
     }
 
     public static Card getIncorrectYearCard() {

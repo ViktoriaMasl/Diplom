@@ -30,10 +30,10 @@ public class SQL_bd {
 
     public static String getOrderCount() {
         Long count = null;
-        val codeSQL = "SELECT COUNT(*) FROM order_entity;";
+        val codesSQL = "SELECT COUNT(*) FROM order_entity;";
         val runner = new QueryRunner();
         try (val conn = DriverManager.getConnection(url,user, password)) {
-            count = runner.query(conn, codeSQL, new ScalarHandler<>());
+            count = runner.query(conn, codesSQL, new ScalarHandler<>());
         } catch (SQLException a) {
             a.printStackTrace();
         }
@@ -41,18 +41,18 @@ public class SQL_bd {
     }
 
     public static String getPaymentStatus() {
-        val codeSQL = "SELECT status FROM payment_entity;";
-        return getData(codeSQL);
+        val codesSQL = "SELECT status FROM payment_entity;";
+        return getData(codesSQL);
     }
 
     public static String getCreditRequestStatus() {
-        val codeSQL = "SELECT status FROM credit_request_entity;";
-        return getData(codeSQL);
+        val codesSQL = "SELECT status FROM credit_request_entity;";
+        return getData(codesSQL);
     }
 
     public static String getData(String query) {
         val runner = new QueryRunner();
-        String data = null;
+        String data = "";
         try (
                 val conn = DriverManager.getConnection(url, user, password
                 );

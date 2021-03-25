@@ -15,14 +15,14 @@ public class StartPage {
         heading.shouldBe(visible);
     }
 
-    public debitPage openDebitPage() {
+    public DebitPage openDebitPage() {
         debitButton.click();
-        return new debitPage();
+        return new DebitPage();
     }
 
-    public creditPage openCreditPage() {
+    public CreditPage openCreditPage() {
         creditButton.click();
-        return new creditPage();
+        return new CreditPage();
     }
 
 }
