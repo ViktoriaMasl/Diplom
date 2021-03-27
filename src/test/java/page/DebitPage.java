@@ -19,7 +19,7 @@ public class DebitPage {
     private SelenideElement cardOwner = $(byText("Владелец")).parent().$("[class=\"input__control\"]");
     private SelenideElement cardCode = $(byText("CVC/CVV")).parent().$("[class=\"input__control\"]");
     private SelenideElement continueButton = $$("button").find(exactText("Продолжить"));
-    private SelenideElement operationApproved = $$(".notification__title").find(exactText("Успешно"));
+    private SelenideElement operationApproved = $(".notification_status_ok");
     private SelenideElement operationDenied = $(".notification_status_error");
     private SelenideElement invalidField = $(".input__sub");
 

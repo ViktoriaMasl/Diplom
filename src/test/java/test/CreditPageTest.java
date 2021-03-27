@@ -39,7 +39,7 @@ public class CreditPageTest {
         val creditPage = startPage.openCreditPage();
         creditPage.inputField(DataHelper.getApprovedCard());
         creditPage.getStatusOk();
-        assertEquals("APPROVED", SQL_bd.getPaymentStatus());
+        assertEquals("APPROVED", SQL_bd.getCreditRequestStatus());
     }
 
     @Test
@@ -48,7 +48,7 @@ public class CreditPageTest {
         val creditPage = startPage.openCreditPage();
         creditPage.inputField(DataHelper.getDeclinedCard());
         creditPage.getStatusDenied();
-        assertEquals("DECLINED", SQL_bd.getPaymentStatus());
+        assertEquals("DECLINED", SQL_bd.getCreditRequestStatus());
     }
 
     @Test
@@ -70,12 +70,21 @@ public class CreditPageTest {
     }
 
     @Test
+    void shouldBuyWithMonthZeroCard() {
+        val startPage = new StartPage();
+        val creditPage = startPage.openCreditPage();
+        creditPage.inputField(DataHelper.getMonthZeroCard());
+        creditPage.getStatusInvalidField();
+        assertEquals("Неверный формат", creditPage.getStatusInvalidField());
+    }
+
+    @Test
     void shouldBuyWithExpiredMonthCard() {
         val startPage = new StartPage();
         val creditPage = startPage.openCreditPage();
         creditPage.inputField(DataHelper.getExpiredMonthCard());
         creditPage.getStatusInvalidField();
-        assertEquals("Срок действия карты истек", creditPage.getStatusInvalidField());
+        assertEquals("Истёк срок действия карты", creditPage.getStatusInvalidField());
     }
 
     @Test
@@ -84,7 +93,7 @@ public class CreditPageTest {
         val creditPage = startPage.openCreditPage();
         creditPage.inputField(DataHelper.getExpiredYearCard());
         creditPage.getStatusInvalidField();
-        assertEquals("Срок действия карты истек", creditPage.getStatusInvalidField());
+        assertEquals("Истёк срок действия карты", creditPage.getStatusInvalidField());
     }
 
     @Test
@@ -93,7 +102,7 @@ public class CreditPageTest {
         val creditPage = startPage.openCreditPage();
         creditPage.inputField(DataHelper.getIncorrectMonthCard());
         creditPage.getStatusInvalidField();
-        assertEquals("Неверно указан срок действия карты", creditPage.getStatusInvalidField());
+        assertEquals("Неверный формат", creditPage.getStatusInvalidField());
     }
 
     @Test

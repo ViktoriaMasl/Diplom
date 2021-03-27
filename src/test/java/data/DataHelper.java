@@ -20,6 +20,10 @@ public class DataHelper {
         return new Card("444444444444444", "12", "24", "Ivan Petrov", "123");
     }
 
+    public static Card getMonthZeroCard() {
+        return new Card("4444444444444441", "00", "24", "Ivan Petrov", "123");
+    }
+
     public static Card getExpiredMonthCard() {
         return new Card("4444444444444441", "01", "21", "Ivan Petrov", "123");
     }

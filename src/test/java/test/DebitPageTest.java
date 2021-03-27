@@ -70,12 +70,21 @@ public class DebitPageTest {
     }
 
     @Test
+    void shouldBuyWithMonthZeroCard() {
+        val startPage = new StartPage();
+        val debitPage = startPage.openDebitPage();
+        debitPage.inputField(DataHelper.getMonthZeroCard());
+        debitPage.getStatusInvalidField();
+        assertEquals("Неверный формат", debitPage.getStatusInvalidField());
+    }
+
+    @Test
     void shouldBuyWithExpiredMonthCard() {
         val startPage = new StartPage();
         val debitPage = startPage.openDebitPage();
         debitPage.inputField(DataHelper.getExpiredMonthCard());
         debitPage.getStatusInvalidField();
-        assertEquals("Срок действия карты истек", debitPage.getStatusInvalidField());
+        assertEquals("Истёк срок действия карты", debitPage.getStatusInvalidField());
     }
 
     @Test
@@ -84,7 +93,7 @@ public class DebitPageTest {
         val debitPage = startPage.openDebitPage();
         debitPage.inputField(DataHelper.getExpiredYearCard());
         debitPage.getStatusInvalidField();
-        assertEquals("Срок действия карты истек", debitPage.getStatusInvalidField());
+        assertEquals("Истёк срок действия карты", debitPage.getStatusInvalidField());
     }
 
     @Test
@@ -93,7 +102,7 @@ public class DebitPageTest {
         val debitPage = startPage.openDebitPage();
         debitPage.inputField(DataHelper.getIncorrectMonthCard());
         debitPage.getStatusInvalidField();
-        assertEquals("Неверно указан срок действия карты", debitPage.getStatusInvalidField());
+        assertEquals("Неверный формат", debitPage.getStatusInvalidField());
     }
 
     @Test

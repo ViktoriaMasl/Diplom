@@ -32,7 +32,7 @@ public class SQL_bd {
         Long count = null;
         val codesSQL = "SELECT COUNT(*) FROM order_entity;";
         val runner = new QueryRunner();
-        try (val conn = DriverManager.getConnection(url,user, password)) {
+        try (val conn = DriverManager.getConnection(url, user, password)) {
             count = runner.query(conn, codesSQL, new ScalarHandler<>());
         } catch (SQLException a) {
             a.printStackTrace();
