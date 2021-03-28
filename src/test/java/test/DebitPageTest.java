@@ -138,7 +138,7 @@ public class DebitPageTest {
         val debitPage = startPage.openDebitPage();
         debitPage.inputField(DataHelper.getEmptyCard());
         debitPage.getStatusInvalidField();
-        assertEquals("Неверный формат", debitPage.getStatusInvalidField());
+        assertEquals("Поле обязательно для заполнения", debitPage.getStatusInvalidField());
     }
 
 }

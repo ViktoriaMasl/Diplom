@@ -138,6 +138,6 @@ public class CreditPageTest {
         val creditPage = startPage.openCreditPage();
         creditPage.inputField(DataHelper.getEmptyCard());
         creditPage.getStatusInvalidField();
-        assertEquals("Неверный формат", creditPage.getStatusInvalidField());
+        assertEquals("Поле обязательно для заполнения", creditPage.getStatusInvalidField());
     }
 }

@@ -41,7 +41,7 @@ public class DataHelper {
     }
 
     public static Card getIncorrectNameCard() {
-        return new Card("4444444444444441", "12", "24", "Иван Petrov1234*!):%;", "123");
+        return new Card("4444444444444441", "12", "24", "Иван1234*!):%;", "123");
     }
 
     public static Card getIncorrectCVCCard() {
