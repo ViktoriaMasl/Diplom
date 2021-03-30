@@ -79,6 +79,15 @@ public class DebitPageTest {
     }
 
     @Test
+    void shouldBuyWithNonexistentMonthCard() {
+        val startPage = new StartPage();
+        val debitPage = startPage.openDebitPage();
+        debitPage.inputField(DataHelper.getNonexistentMonthCard());
+        debitPage.getStatusInvalidField();
+        assertEquals("Неверно указан срок действия карты", debitPage.getStatusInvalidField());
+    }
+
+    @Test
     void shouldBuyWithExpiredMonthCard() {
         val startPage = new StartPage();
         val debitPage = startPage.openDebitPage();

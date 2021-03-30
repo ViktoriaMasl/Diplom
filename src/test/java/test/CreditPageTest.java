@@ -79,6 +79,15 @@ public class CreditPageTest {
     }
 
     @Test
+    void shouldBuyWithNonexistentMonthCard() {
+        val startPage = new StartPage();
+        val creditPage = startPage.openCreditPage();
+        creditPage.inputField(DataHelper.getNonexistentMonthCard());
+        creditPage.getStatusInvalidField();
+        assertEquals("Неверно указан срок действия карты", creditPage.getStatusInvalidField());
+    }
+
+    @Test
     void shouldBuyWithExpiredMonthCard() {
         val startPage = new StartPage();
         val creditPage = startPage.openCreditPage();
