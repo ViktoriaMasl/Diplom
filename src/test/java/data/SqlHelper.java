@@ -7,7 +7,7 @@ import org.apache.commons.dbutils.handlers.ScalarHandler;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class SQL_bd {
+public class SqlHelper {
     static String url = System.getProperty("db.url");
     static String user = System.getProperty("db.user");
     static String password = System.getProperty("db.password");

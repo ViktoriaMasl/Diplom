@@ -1,12 +1,12 @@
-package test;
+package tests;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
 import data.DataHelper;
-import data.SQL_bd;
+import data.SqlHelper;
 import io.qameta.allure.selenide.AllureSelenide;
 import lombok.val;
 import org.junit.jupiter.api.*;
-import page.StartPage;
+import pages.StartPage;
 
 import static com.codeborne.selenide.Selenide.open;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -25,7 +25,7 @@ public class DebitPageTest {
 
     @AfterEach
     public void clearBD() {
-        SQL_bd.clearDB();
+        SqlHelper.clearDB();
     }
 
     @AfterAll
@@ -38,8 +38,8 @@ public class DebitPageTest {
         val startPage = new StartPage();
         val debitPage = startPage.openDebitPage();
         debitPage.inputField(DataHelper.getApprovedCard());
-        debitPage.getStatusOk();
-        assertEquals("APPROVED", SQL_bd.getPaymentStatus());
+        debitPage.checkStatusOk();
+        assertEquals("APPROVED", SqlHelper.getPaymentStatus());
     }
 
     @Test
@@ -47,8 +47,8 @@ public class DebitPageTest {
         val startPage = new StartPage();
         val debitPage = startPage.openDebitPage();
         debitPage.inputField(DataHelper.getDeclinedCard());
-        debitPage.getStatusDenied();
-        assertEquals("DECLINED", SQL_bd.getPaymentStatus());
+        debitPage.checkStatusDenied();
+        assertEquals("DECLINED", SqlHelper.getPaymentStatus());
     }
 
     @Test
@@ -56,8 +56,8 @@ public class DebitPageTest {
         val startPage = new StartPage();
         val debitPage = startPage.openDebitPage();
         debitPage.inputField(DataHelper.getNonexistentCard());
-        debitPage.getStatusDenied();
-        assertEquals("0", SQL_bd.getOrderCount());
+        debitPage.checkStatusDenied();
+        assertEquals("0", SqlHelper.getOrderCount());
     }
 
     @Test
@@ -65,8 +65,8 @@ public class DebitPageTest {
         val startPage = new StartPage();
         val debitPage = startPage.openDebitPage();
         debitPage.inputField(DataHelper.getIncompleteNumberCard());
-        debitPage.getStatusInvalidField();
-        assertEquals("Неверный формат", debitPage.getStatusInvalidField());
+        debitPage.checkStatusInvalidField();
+        assertEquals("Неверный формат", debitPage.checkStatusInvalidField());
     }
 
     @Test
@@ -74,8 +74,8 @@ public class DebitPageTest {
         val startPage = new StartPage();
         val debitPage = startPage.openDebitPage();
         debitPage.inputField(DataHelper.getMonthZeroCard());
-        debitPage.getStatusInvalidField();
-        assertEquals("Неверный формат", debitPage.getStatusInvalidField());
+        debitPage.checkStatusInvalidField();
+        assertEquals("Неверный формат", debitPage.checkStatusInvalidField());
     }
 
     @Test
@@ -83,8 +83,8 @@ public class DebitPageTest {
         val startPage = new StartPage();
         val debitPage = startPage.openDebitPage();
         debitPage.inputField(DataHelper.getNonexistentMonthCard());
-        debitPage.getStatusInvalidField();
-        assertEquals("Неверно указан срок действия карты", debitPage.getStatusInvalidField());
+        debitPage.checkStatusInvalidField();
+        assertEquals("Неверно указан срок действия карты", debitPage.checkStatusInvalidField());
     }
 
     @Test
@@ -92,8 +92,8 @@ public class DebitPageTest {
         val startPage = new StartPage();
         val debitPage = startPage.openDebitPage();
         debitPage.inputField(DataHelper.getExpiredMonthCard());
-        debitPage.getStatusInvalidField();
-        assertEquals("Истёк срок действия карты", debitPage.getStatusInvalidField());
+        debitPage.checkStatusInvalidField();
+        assertEquals("Истёк срок действия карты", debitPage.checkStatusInvalidField());
     }
 
     @Test
@@ -101,8 +101,8 @@ public class DebitPageTest {
         val startPage = new StartPage();
         val debitPage = startPage.openDebitPage();
         debitPage.inputField(DataHelper.getExpiredYearCard());
-        debitPage.getStatusInvalidField();
-        assertEquals("Истёк срок действия карты", debitPage.getStatusInvalidField());
+        debitPage.checkStatusInvalidField();
+        assertEquals("Истёк срок действия карты", debitPage.checkStatusInvalidField());
     }
 
     @Test
@@ -110,8 +110,8 @@ public class DebitPageTest {
         val startPage = new StartPage();
         val debitPage = startPage.openDebitPage();
         debitPage.inputField(DataHelper.getIncorrectMonthCard());
-        debitPage.getStatusInvalidField();
-        assertEquals("Неверный формат", debitPage.getStatusInvalidField());
+        debitPage.checkStatusInvalidField();
+        assertEquals("Неверный формат", debitPage.checkStatusInvalidField());
     }
 
     @Test
@@ -119,8 +119,8 @@ public class DebitPageTest {
         val startPage = new StartPage();
         val debitPage = startPage.openDebitPage();
         debitPage.inputField(DataHelper.getIncorrectYearCard());
-        debitPage.getStatusInvalidField();
-        assertEquals("Неверный формат", debitPage.getStatusInvalidField());
+        debitPage.checkStatusInvalidField();
+        assertEquals("Неверный формат", debitPage.checkStatusInvalidField());
     }
 
     @Test
@@ -128,8 +128,8 @@ public class DebitPageTest {
         val startPage = new StartPage();
         val debitPage = startPage.openDebitPage();
         debitPage.inputField(DataHelper.getIncorrectNameCard());
-        debitPage.getStatusInvalidField();
-        assertEquals("Неверный формат", debitPage.getStatusInvalidField());
+        debitPage.checkStatusInvalidField();
+        assertEquals("Неверный формат", debitPage.checkStatusInvalidField());
     }
 
     @Test
@@ -137,8 +137,8 @@ public class DebitPageTest {
         val startPage = new StartPage();
         val debitPage = startPage.openDebitPage();
         debitPage.inputField(DataHelper.getIncorrectCVCCard());
-        debitPage.getStatusInvalidField();
-        assertEquals("Неверный формат", debitPage.getStatusInvalidField());
+        debitPage.checkStatusInvalidField();
+        assertEquals("Неверный формат", debitPage.checkStatusInvalidField());
     }
 
     @Test
@@ -146,8 +146,8 @@ public class DebitPageTest {
         val startPage = new StartPage();
         val debitPage = startPage.openDebitPage();
         debitPage.inputField(DataHelper.getEmptyCard());
-        debitPage.getStatusInvalidField();
-        assertEquals("Поле обязательно для заполнения", debitPage.getStatusInvalidField());
+        debitPage.checkStatusInvalidField();
+        assertEquals("Поле обязательно для заполнения", debitPage.checkStatusInvalidField());
     }
 
 }

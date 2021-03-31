@@ -1,4 +1,4 @@
-package page;
+package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import data.Card;
@@ -36,15 +36,15 @@ public class CreditPage {
         continueButton.click();
     }
 
-    public void getStatusOk() {
+    public void checkStatusOk() {
         operationApproved.shouldBe(visible, Duration.ofMillis(15000));
     }
 
-    public void getStatusDenied() {
+    public void checkStatusDenied() {
         operationDenied.shouldBe(visible, Duration.ofMillis(15000));
     }
 
-    public String getStatusInvalidField() {
+    public String checkStatusInvalidField() {
         return invalidField.getText();
     }
 }
