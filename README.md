@@ -10,10 +10,14 @@
 * сервису платежей (Payment Gate)
 * кредитному сервису (Credit Gate)  
 
-Приложение должно в собственной СУБД сохранять информацию о том, каким способом был совершён платёж и успешно ли он был обработан (при этом данные карт сохранять не допускается).
+Приложение должно в собственной СУБД сохранять информацию о том, каким способом был совершён платёж и успешно ли он был обработан (при этом данные карт сохранять не допускается).  
+
+[Ссылка на дипломное задание](https://github.com/netology-code/qa-diploma)  
 
 ## **Тестовая документация**  
-[example.com](http://example.com)
+[План автоматизации](https://github.com/ViktoriaMasl/Diplom/blob/master/documents/Plan.md)  
+[Отчёт о проведённом тестировании](https://github.com/ViktoriaMasl/Diplom/blob/master/documents/Report.md)  
+[Отчёт о проведённой автоматизации](https://github.com/ViktoriaMasl/Diplom/blob/master/documents/Summary.md)
 
 ## **Процедура запуска авто-тестов**
 
